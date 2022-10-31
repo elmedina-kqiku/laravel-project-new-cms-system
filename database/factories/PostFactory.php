@@ -1,0 +1,29 @@
+<?php
+
+namespace Database\Factories;
+
+use App\Models\User;
+use Illuminate\Database\Eloquent\Factories\Factory;
+
+/**
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Post>
+ */
+class PostFactory extends Factory
+{
+    /**
+     * Define the model's default state.
+     *
+     * @return array<string, mixed>
+     */
+    public function definition()
+    {
+        return [
+            //
+            //if we write 1 instead of factory(App\User) its going to create all data with ID of 1
+            'user_id' => User::factory()->create(),
+            'title' => fake()->sentence,
+            'post_image' => fake()->imageUrl('900', '300'),
+            'body' => fake()->paragraph
+        ];
+    }
+}
